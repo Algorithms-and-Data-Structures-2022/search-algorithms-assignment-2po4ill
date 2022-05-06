@@ -16,11 +16,25 @@ namespace assignment {
     // Tips:
     // 1. Рассмотрите базовые случаи выхода и рекурсии:
     //    1) индекс левого элемента стал больше индекса правого элемента
+    if (start > stop)
+    {
+      return std::nullopt;
+    }
     //    2) целевой элемент найден
+    if (arr[(start + stop)/2] == search_elem)
+    {
+      return (start + stop)/2;
+    }
     // 2. Вызовите рекурсивный метод, изменив границы поиска
     //    в зависимости от неравенства между элементом посередине и целевого элемента
-
-    return std::nullopt;
+    if (arr[(start + stop)/2] > search_elem)
+    {
+      return search(arr, search_elem, start, (start + stop)/2 - 1);
+    }
+    if (arr[(start + stop)/2] < search_elem)
+    {
+      return search(arr, search_elem, (start + stop)/2 + 1, stop);
+    }
   }
 
 }  // namespace assignment
